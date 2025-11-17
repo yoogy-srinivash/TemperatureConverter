@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <div class="card">
+            <form method="POST" action="/">
+                <div class="form-group">
+                    <label for="celsius">Celsius (°C):</label>
+                    <input type="number" id="celsius" name="celsius" step="0.01" required>
+                </div>
+                <button type="submit">Convert to Fahrenheit</button>
+            </form>
+            
+            {% if error %}
+            <div class="error">
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+            
+            {% if result %}
+            <div class="result">
+                <p>{{ result.celsius }}°C = {{ result.fahrenheit }}°F</p>
+                <p class="formula">Formula: (°C × 9/5) + 32 = °F</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
